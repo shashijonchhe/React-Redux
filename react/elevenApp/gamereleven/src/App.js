@@ -1,21 +1,20 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
+import Input from './components/input';
+import Button from './components/button';
 
 class App extends Component{
-  constructor(){
-    super()
+  // constructor(){
+  //   super()
 
-    this.inputRef=React.createRef()
-  }
+  //   this.inputRef=React.createRef()
+  // }
 render(){
   return(
 <div>
-  <input type="text" 
-  placeholder="Enterlist" 
-  //onChange={this.props.onHandleChange}/>
-  ref={this.inputRef}/>
+  <Input onHandleChange={this.props.onHandleChange}/>
 <br/>
-  <button onClick={this.props.onHandleClick.bind(this,this.inputRef)}>add</button>
+  <Button onHandleClick={this.props.onHandleClick}/>
 <br/>  
 <ol>
   {this.props.list.map((ListItem, index)=>{
@@ -39,8 +38,8 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch)=>{
   return{
 
-    //onHandleChange:(e)=> dispatch({type:'inputChange', val: e.target.value}),
-    onHandleClick:(val)=>dispatch({type:'addItem', val: val}),
+    onHandleChange:(e)=> dispatch({type:'inputChange', val: e.target.value}),
+    onHandleClick:()=>dispatch({type:'addItem'}),
     onHandleDelete:(id)=>dispatch({type: 'deleteItem', val: id})
     
   }

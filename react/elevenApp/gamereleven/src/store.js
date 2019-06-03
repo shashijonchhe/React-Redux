@@ -10,16 +10,21 @@ const initialState={
  const reducer = (state=initialState, action)=>{
  	
  	switch(action.type){
- 		// case 'inputChange':
- 		// 	return{
- 		// 		...state,
- 		// 		str: action.val
 
- 			
- 		case 'addItem':
+
+ 		case 'inputChange':
+
+ 		console.log("inside the case", action.val)
  			return{
  				...state,
- 				list:[...state.list,action.val.current.value],
+ 				str: action.val
+}
+ 			
+ 		case 'addItem':
+ 		
+ 			return{
+ 				...state,
+ 				list:[...state.list,state.str],
  				str:""
  				
  			}
